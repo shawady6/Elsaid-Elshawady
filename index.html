@@ -1,1563 +1,713 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>السعيد الشوادي | نقاشة وتشطيبات</title>
-
-    <meta
-        name="description"
-        content="معرض من أعمال السعيد الشوادي في النقاشة والدهانات والتشطيبات."
-    >
-
-    <link
-        rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%96%8C%EF%B8%8F</text></svg>"
-    >
-
-    <style>
-        :root {
-            --bg: #f8f6f1;
-            --surface: #ffffff;
-            --soft: #f1ede5;
-            --primary: #9a8065;
-            --primary-dark: #735d48;
-            --text: #403a34;
-            --muted: #766f67;
-            --border: #e7e0d6;
-            --shadow: 0 15px 40px rgba(64, 58, 52, 0.08);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family:
-                "Segoe UI",
-                Tahoma,
-                Arial,
-                sans-serif;
-
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.8;
-        }
-
-        button,
-        a {
-            font: inherit;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* =========================
-           NAVBAR
-        ========================= */
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            z-index: 1000;
-
-            background: rgba(248, 246, 241, 0.92);
-            backdrop-filter: blur(12px);
-
-            border-bottom: 1px solid rgba(231, 224, 214, 0.8);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: auto;
-
-            min-height: 72px;
-            padding: 0 24px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .logo {
-            font-size: 19px;
-            font-weight: 700;
-            color: var(--primary-dark);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-        }
-
-        .nav-links a {
-            color: var(--muted);
-            font-size: 15px;
-            transition: 0.25s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-dark);
-        }
-
-        /* =========================
-           GENERAL
-        ========================= */
-
-        .container {
-            width: min(1200px, calc(100% - 40px));
-            margin: auto;
-        }
-
-        section {
-            padding: 100px 0;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            min-height: 82vh;
-            padding-top: 150px;
-            padding-bottom: 90px;
-
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-content {
-            max-width: 780px;
-        }
-
-        .eyebrow {
-            display: inline-block;
-
-            padding: 7px 14px;
-            margin-bottom: 22px;
-
-            border: 1px solid var(--border);
-            border-radius: 999px;
-
-            background: var(--surface);
-
-            color: var(--primary-dark);
-            font-size: 14px;
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 7vw, 78px);
-            line-height: 1.12;
-            letter-spacing: -2px;
-            margin-bottom: 25px;
-        }
-
-        .hero h1 span {
-            color: var(--primary);
-        }
-
-        .hero p {
-            max-width: 650px;
-
-            color: var(--muted);
-            font-size: 19px;
-
-            margin-bottom: 34px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-
-            min-height: 48px;
-            padding: 0 23px;
-
-            border-radius: 12px;
-
-            cursor: pointer;
-            transition: 0.25s;
-        }
-
-        .btn-primary {
-            background: var(--primary-dark);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            background: #604d3b;
-        }
-
-        .btn-secondary {
-            border: 1px solid var(--border);
-            background: var(--surface);
-            color: var(--text);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--primary);
-        }
-
-        /* =========================
-           SECTION HEADER
-        ========================= */
-
-        .section-header {
-            display: flex;
-            align-items: end;
-            justify-content: space-between;
-
-            gap: 30px;
-            margin-bottom: 35px;
-        }
-
-        .section-header h2 {
-            font-size: clamp(30px, 5vw, 48px);
-            line-height: 1.2;
-            margin-bottom: 8px;
-        }
-
-        .section-header p {
-            color: var(--muted);
-        }
-
-        .photo-count {
-            flex-shrink: 0;
-
-            padding: 9px 15px;
-
-            border-radius: 999px;
-            background: var(--soft);
-
-            color: var(--primary-dark);
-            font-size: 14px;
-        }
-
-        /* =========================
-           GALLERY
-        ========================= */
-
-        .gallery-section {
-            background: var(--surface);
-        }
-
-        .slider {
-            position: relative;
-            width: 100%;
-        }
-
-        .slider-window {
-            width: 100%;
-            overflow: hidden;
-            border-radius: 24px;
-        }
-
-        .slider-track {
-            display: flex;
-            gap: 20px;
-
-            direction: ltr;
-
-            transition: transform 0.6s ease;
-            will-change: transform;
-        }
-
-        .slide {
-            position: relative;
-
-            flex: 0 0 calc((100% - 40px) / 3);
-
-            height: 430px;
-
-            overflow: hidden;
-            border-radius: 22px;
-
-            background: var(--soft);
-
-            cursor: pointer;
-
-            box-shadow: var(--shadow);
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-
-            display: block;
-
-            object-fit: cover;
-
-            transition: transform 0.5s ease;
-        }
-
-        .slide:hover img {
-            transform: scale(1.04);
-        }
-
-        .slide::after {
-            content: "اضغط للتكبير";
-
-            position: absolute;
-            right: 16px;
-            bottom: 16px;
-
-            padding: 5px 10px;
-
-            border-radius: 999px;
-
-            background: rgba(0, 0, 0, 0.55);
-            color: white;
-
-            font-size: 12px;
-
-            opacity: 0;
-            transform: translateY(5px);
-
-            transition: 0.25s;
-        }
-
-        .slide:hover::after {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Slider buttons */
-
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            z-index: 10;
-
-            width: 48px;
-            height: 48px;
-
-            transform: translateY(-50%);
-
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-
-            background: rgba(255, 255, 255, 0.92);
-            color: var(--text);
-
-            font-size: 30px;
-            line-height: 1;
-
-            cursor: pointer;
-
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-
-            transition: 0.25s;
-        }
-
-        .slider-btn:hover {
-            background: var(--primary-dark);
-            color: white;
-        }
-
-        .slider-btn.prev {
-            left: 15px;
-        }
-
-        .slider-btn.next {
-            right: 15px;
-        }
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        .contact-card {
-            padding: 50px;
-
-            border: 1px solid var(--border);
-            border-radius: 28px;
-
-            background: var(--soft);
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            gap: 40px;
-        }
-
-        .contact-card h2 {
-            font-size: 38px;
-            margin-bottom: 10px;
-        }
-
-        .contact-card p {
-            color: var(--muted);
-        }
-
-        .contact-buttons {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            padding: 30px 20px;
-
-            border-top: 1px solid var(--border);
-
-            text-align: center;
-
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        /* =========================
-           LIGHTBOX
-        ========================= */
-
-        .lightbox {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            padding: 30px;
-
-            background: rgba(18, 16, 14, 0.96);
-
-            opacity: 0;
-            visibility: hidden;
-
-            transition: opacity 0.25s ease;
-        }
-
-        .lightbox.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .lightbox-image {
-            max-width: 92vw;
-            max-height: 90vh;
-
-            width: auto;
-            height: auto;
-
-            object-fit: contain;
-
-            border-radius: 10px;
-
-            box-shadow: 0 20px 70px rgba(0, 0, 0, 0.45);
-
-            user-select: none;
-        }
-
-        .lightbox-close,
-        .lightbox-btn {
-            position: absolute;
-            z-index: 5;
-
-            width: 52px;
-            height: 52px;
-
-            border: none;
-            border-radius: 50%;
-
-            background: rgba(255, 255, 255, 0.13);
-            color: white;
-
-            cursor: pointer;
-
-            font-size: 32px;
-            line-height: 1;
-
-            transition: 0.2s;
-        }
-
-        .lightbox-close:hover,
-        .lightbox-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-        }
-
-        .lightbox-close {
-            top: 25px;
-            right: 25px;
-        }
-
-        .lightbox-btn.prev {
-            left: 25px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .lightbox-btn.next {
-            right: 25px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 850px) {
-
-            .nav-container {
-                min-height: 64px;
-            }
-
-            .nav-links {
-                gap: 15px;
-            }
-
-            .nav-links a {
-                font-size: 13px;
-            }
-
-            .hero {
-                min-height: auto;
-                padding-top: 130px;
-                padding-bottom: 70px;
-            }
-
-            .hero h1 {
-                letter-spacing: -1px;
-            }
-
-            .hero p {
-                font-size: 17px;
-            }
-
-            section {
-                padding: 75px 0;
-            }
-
-            .section-header {
-                align-items: start;
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .slide {
-                flex: 0 0 100%;
-                height: 460px;
-            }
-
-            .slider-track {
-                gap: 0;
-            }
-
-            .slider-btn {
-                display: none;
-            }
-
-            .contact-card {
-                padding: 35px 25px;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .contact-card h2 {
-                font-size: 30px;
-            }
-        }
-
-        @media (max-width: 500px) {
-
-            .container {
-                width: min(100% - 28px, 1200px);
-            }
-
-            .logo {
-                font-size: 16px;
-            }
-
-            .nav-links {
-                gap: 10px;
-            }
-
-            .nav-links a:first-child {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 42px;
-            }
-
-            .hero-buttons,
-            .contact-buttons {
-                width: 100%;
-            }
-
-            .hero-buttons .btn,
-            .contact-buttons .btn {
-                flex: 1;
-            }
-
-            .slide {
-                height: 420px;
-                border-radius: 18px;
-            }
-
-            .slider-btn.prev {
-                left: 10px;
-            }
-
-            .slider-btn.next {
-                right: 10px;
-            }
-
-            .lightbox {
-                padding: 12px;
-            }
-
-            .lightbox-image {
-                max-width: 96vw;
-                max-height: 86vh;
-                border-radius: 6px;
-            }
-
-            .lightbox-close {
-                top: 15px;
-                right: 15px;
-
-                width: 44px;
-                height: 44px;
-            }
-
-            .lightbox-btn {
-                width: 42px;
-                height: 42px;
-                font-size: 26px;
-            }
-
-            .lightbox-btn.prev {
-                left: 10px;
-            }
-
-            .lightbox-btn.next {
-                right: 10px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <title>السعيد عزت الشوادي | نقاشة وتشطيبات</title>
+  <meta name="description" content="معرض أعمال السعيد عزت الشوادي في النقاشة والدهانات والتشطيبات.">
+  <meta name="theme-color" content="#9a8065">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="السعيد عزت">
+
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+
+  <style>
+    :root {
+      --bg: #f8f6f1;
+      --surface: #ffffff;
+      --soft: #f1ede5;
+      --primary: #9a8065;
+      --primary-dark: #735d48;
+      --text: #403a34;
+      --muted: #766f67;
+      --border: #e7e0d6;
+      --shadow: 0 16px 40px rgba(64, 58, 52, .09);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin-inline: auto;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(248, 246, 241, .92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(231, 224, 214, .9);
+    }
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .nav-links a:hover { color: var(--primary-dark); }
+
+    .hero {
+      padding: 92px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      text-align: center;
+      max-width: 850px;
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      justify-content: center;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 6vw, 4.8rem);
+      line-height: 1.15;
+      letter-spacing: -.04em;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      min-height: 48px;
+      padding: 11px 22px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: .2s ease;
+      font-weight: 700;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: var(--primary-dark); }
+
+    .btn-secondary {
+      background: var(--surface);
+      border-color: var(--border);
+    }
+
+    .section {
+      padding: 70px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 26px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.2;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .gallery-wrap {
+      position: relative;
+    }
+
+    .slider-viewport {
+      overflow: hidden;
+      border-radius: 24px;
+    }
+
+    .slider-track {
+      display: flex;
+      gap: 20px;
+      direction: ltr;
+      transition: transform .6s ease;
+      will-change: transform;
+    }
+
+    .slide {
+      flex: 0 0 calc((100% - 40px) / 3);
+      height: 430px;
+      overflow: hidden;
+      border-radius: 22px;
+      background: var(--soft);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      border: 1px solid var(--border);
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform .45s ease;
+    }
+
+    .slide:hover img { transform: scale(1.035); }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: rgba(255,255,255,.94);
+      color: var(--text);
+      cursor: pointer;
+      z-index: 3;
+      box-shadow: 0 8px 25px rgba(0,0,0,.1);
+      font-size: 1.4rem;
+    }
+
+    .slider-btn:hover { background: #fff; }
+    .slider-prev { right: 16px; }
+    .slider-next { left: 16px; }
+
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .contact-card h2 { margin-bottom: 8px; }
+    .contact-card p { color: var(--muted); }
+
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    footer {
+      padding: 30px 0 42px;
+      color: var(--muted);
+      text-align: center;
+      font-size: .9rem;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(18,16,14,.96);
+      opacity: 0;
+      visibility: hidden;
+      transition: .2s ease;
+      padding: 20px;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-image {
+      max-width: 92vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,.13);
+      color: #fff;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .lightbox-close {
+      top: 18px;
+      right: 18px;
+      font-size: 1.5rem;
+    }
+
+    .lightbox-prev {
+      right: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lightbox-next {
+      left: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .install-banner {
+      position: fixed;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      z-index: 8000;
+      display: none;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0,0,0,.16);
+    }
+
+    .install-banner.show { display: flex; }
+
+    .install-text {
+      flex: 1;
+      font-size: .9rem;
+    }
+
+    .install-text strong { display: block; }
+    .install-text span { color: var(--muted); }
+
+    .install-btn {
+      border: 0;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 12px;
+      padding: 9px 14px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .install-close {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 850px) {
+      .nav-links { display: none; }
+
+      .hero {
+        padding: 64px 0 48px;
+      }
+
+      .section { padding: 52px 0; }
+
+      .section-head {
+        display: block;
+      }
+
+      .slider-track { gap: 0; }
+
+      .slide {
+        flex: 0 0 100%;
+        height: min(460px, 70vh);
+      }
+
+      .slider-btn {
+        width: 44px;
+        height: 44px;
+      }
+
+      .slider-prev { right: 10px; }
+      .slider-next { left: 10px; }
+
+      .contact-card { padding: 28px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .slider-track,
+      .slide img,
+      .btn { transition: none; }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- =========================
-         NAVBAR
-    ========================== -->
-
-    <header class="navbar">
-
-        <div class="nav-container">
-
-            <a href="#" class="logo">
-                السعيد الشوادي
-            </a>
-
-            <nav class="nav-links">
-                <a href="#works">الأعمال</a>
-                <a href="#contact">تواصل معنا</a>
-            </nav>
-
-        </div>
-
-    </header>
-
-
-    <main>
-
-        <!-- =========================
-             HERO
-        ========================== -->
-
-        <section class="hero">
-
-            <div class="container">
-
-                <div class="hero-content">
-
-                    <span class="eyebrow">
-                        نقاشة وتشطيبات
-                    </span>
-
-                    <h1>
-                        شغل متقن،
-                        <span>وتفاصيل تفرق.</span>
-                    </h1>
-
-                    <p>
-                        معرض من أعمال السعيد الشوادي
-                        في النقاشة والدهانات والتشطيبات،
-                        مع الاهتمام بالتفاصيل وجودة التنفيذ.
-                    </p>
-
-                    <div class="hero-buttons">
-
-                        <a
-                            href="#works"
-                            class="btn btn-primary"
-                        >
-                            شاهد الأعمال
-                        </a>
-
-                        <a
-                            href="#contact"
-                            class="btn btn-secondary"
-                        >
-                            تواصل معنا
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             GALLERY
-        ========================== -->
-
-        <section
-            class="gallery-section"
-            id="works"
-        >
-
-            <div class="container">
-
-                <div class="section-header">
-
-                    <div>
-                        <h2>من أعمالنا</h2>
-
-                        <p>
-                            مجموعة من أعمال النقاشة والدهانات والتشطيبات.
-                        </p>
-                    </div>
-                </div>
-
-
-                <div class="slider">
-
-                    <button
-                        class="slider-btn prev"
-                        id="prevBtn"
-                        type="button"
-                        aria-label="الصورة السابقة"
-                    >
-                        ‹
-                    </button>
-
-
-                    <div class="slider-window">
-
-                        <div
-                            class="slider-track"
-                            id="sliderTrack"
-                        >
-
-                            <!--
-                                الصور سيتم إنشاؤها تلقائيًا
-                                بواسطة JavaScript
-                            -->
-
-                        </div>
-
-                    </div>
-
-
-                    <button
-                        class="slider-btn next"
-                        id="nextBtn"
-                        type="button"
-                        aria-label="الصورة التالية"
-                    >
-                        ›
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             CONTACT
-        ========================== -->
-
-        <section id="contact">
-
-            <div class="container">
-
-                <div class="contact-card">
-
-                    <div>
-
-                        <h2>حابب تتواصل معانا؟</h2>
-
-                        <p>
-                            للاستفسار أو الاتفاق على شغل جديد،
-                            تواصل معنا مباشرة.
-                        </p>
-
-                    </div>
-
-
-                    <div class="contact-buttons">
-
-                        <!-- ضع رقم الهاتف هنا -->
-
-                        <a
-                            href="tel:01016909549"
-                            class="btn btn-primary"
-                        >
-                            اتصال
-                        </a>
-
-
-                        <!-- ضع رقم WhatsApp هنا
-                             بصيغة دولية بدون 0
-                             مثال: 201000000000
-                        -->
-
-                        <a
-                            href="https://wa.me/201016909549"
-                            target="_blank"
-                            rel="noopener"
-                            class="btn btn-secondary"
-                        >
-                            WhatsApp
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#home">السعيد عزت الشوادي</a>
+      <nav class="nav-links" aria-label="التنقل">
+        <a href="#home">الرئيسية</a>
+        <a href="#gallery">الأعمال</a>
+        <a href="#contact">تواصل معنا</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <span class="eyebrow">نقاشة وتشطيبات</span>
+        <h1>شغل متقن، وتفاصيل تفرق.</h1>
         <p>
-            © 2026 السعيد الشوادي — جميع الحقوق محفوظة
+          معرض من أعمال السعيد عزت الشوادي في النقاشة والدهانات والتشطيبات.
         </p>
 
-    </footer>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#gallery">شاهد الأعمال</a>
+          <a class="btn btn-secondary" href="#contact">تواصل معنا</a>
+        </div>
+      </div>
+    </section>
 
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>من أعمالنا</h2>
+            <p>مجموعة من أعمال النقاشة والدهانات والتشطيبات.</p>
+          </div>
+          <strong>234 صورة</strong>
+        </div>
 
-    <!-- =========================
-         LIGHTBOX
-    ========================== -->
+        <div class="gallery-wrap">
+          <button class="slider-btn slider-prev" id="prevBtn" aria-label="الصورة السابقة">›</button>
 
-    <div
-        class="lightbox"
-        id="lightbox"
-        aria-hidden="true"
-    >
+          <div class="slider-viewport">
+            <div class="slider-track" id="sliderTrack"></div>
+          </div>
 
-        <button
-            class="lightbox-close"
-            id="lightboxClose"
-            type="button"
-            aria-label="إغلاق"
-        >
-            ×
-        </button>
+          <button class="slider-btn slider-next" id="nextBtn" aria-label="الصورة التالية">‹</button>
+        </div>
+      </div>
+    </section>
 
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <h2>حابب تتواصل معنا؟</h2>
+          <p>للاستفسار أو طلب معاينة، تواصل معنا مباشرة.</p>
 
-        <button
-            class="lightbox-btn prev"
-            id="lightboxPrev"
-            type="button"
-            aria-label="الصورة السابقة"
-        >
-            ‹
-        </button>
+          <div class="contact-actions">
+            <!-- غيّر الرقمين دول عند إضافة بيانات التواصل الحقيقية -->
+            <a href="tel:01000000000" class="btn btn-primary">اتصال</a>
+            <a href="https://wa.me/201000000000" target="_blank" rel="noopener" class="btn btn-secondary">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <footer>
+    © 2026 السعيد عزت الشوادي — نقاشة وتشطيبات
+  </footer>
 
-        <img
-            class="lightbox-image"
-            id="lightboxImage"
-            src=""
-            alt="صورة من أعمال السعيد الشوادي"
-        >
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="إغلاق">×</button>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="السابق">›</button>
+    <img class="lightbox-image" id="lightboxImage" alt="">
+    <button class="lightbox-next" id="lightboxNext" aria-label="التالي">‹</button>
+  </div>
 
-
-        <button
-            class="lightbox-btn next"
-            id="lightboxNext"
-            type="button"
-            aria-label="الصورة التالية"
-        >
-            ›
-        </button>
-
+  <div class="install-banner" id="installBanner">
+    <div class="install-text">
+      <strong>ثبّت الموقع على موبايلك</strong>
+      <span>افتحه بسرعة كأنه تطبيق.</span>
     </div>
+    <button class="install-btn" id="installBtn">تثبيت</button>
+    <button class="install-close" id="installClose" aria-label="إغلاق">×</button>
+  </div>
 
+  <script>
+    const TOTAL_IMAGES = 234;
+    const IMAGE_FOLDER = "images/";
+    const IMAGE_EXTENSION = ".jpeg";
 
-    <script>
+    const images = [];
+    for (let i = 1; i <= TOTAL_IMAGES; i++) {
+      const number = String(i).padStart(2, "0");
+      images.push(`${IMAGE_FOLDER}${number}${IMAGE_EXTENSION}`);
+    }
 
-        /* ==================================================
-           إعداد الصور
-        ================================================== */
+    const track = document.getElementById("sliderTrack");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
-        const TOTAL_IMAGES = 234;
+    let currentIndex = 0;
+    let autoPlay;
 
-        const IMAGE_FOLDER = "images/";
+    function visibleSlides() {
+      return window.innerWidth <= 850 ? 1 : 3;
+    }
 
-        const IMAGE_EXTENSION = ".jpeg";
+    function createSlides() {
+      track.innerHTML = "";
 
+      images.forEach((src, index) => {
+        const slide = document.createElement("article");
+        slide.className = "slide";
+        slide.dataset.index = index;
 
-        /* ==================================================
-           عناصر الصفحة
-        ================================================== */
+        const img = document.createElement("img");
+        img.alt = `عمل رقم ${index + 1}`;
+        img.loading = index < 6 ? "eager" : "lazy";
+        img.decoding = "async";
 
-        const track =
-            document.getElementById("sliderTrack");
+        if (index < 6) img.src = src;
+        else img.dataset.src = src;
 
-        const prevBtn =
-            document.getElementById("prevBtn");
+        slide.appendChild(img);
+        slide.addEventListener("click", () => openLightbox(index));
+        track.appendChild(slide);
+      });
 
-        const nextBtn =
-            document.getElementById("nextBtn");
+      updateSlider();
+    }
 
+    function loadNearbyImages() {
+      const start = Math.max(0, currentIndex - 2);
+      const end = Math.min(images.length, currentIndex + visibleSlides() + 3);
 
-        const lightbox =
-            document.getElementById("lightbox");
-
-        const lightboxImage =
-            document.getElementById("lightboxImage");
-
-        const lightboxClose =
-            document.getElementById("lightboxClose");
-
-        const lightboxPrev =
-            document.getElementById("lightboxPrev");
-
-        const lightboxNext =
-            document.getElementById("lightboxNext");
-
-
-        /* ==================================================
-           إنشاء قائمة الصور
-        ================================================== */
-
-        const images = [];
-
-        for (let i = 1; i <= TOTAL_IMAGES; i++) {
-
-            const number =
-                String(i).padStart(2, "0");
-
-            images.push(
-                `${IMAGE_FOLDER}${number}${IMAGE_EXTENSION}`
-            );
+      for (let i = start; i < end; i++) {
+        const img = track.children[i]?.querySelector("img");
+        if (img && !img.src && img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute("data-src");
         }
-
-
-        /* ==================================================
-           إنشاء الـ Slides
-        ================================================== */
-
-        images.forEach((image, index) => {
-
-            const slide =
-                document.createElement("div");
-
-            slide.className = "slide";
-
-
-            const img =
-                document.createElement("img");
-
-            img.src = image;
-
-            img.alt =
-                `من أعمال السعيد الشوادي - صورة ${index + 1}`;
-
-            /*
-                أول 6 صور يتم تحميلها مباشرة.
-                باقي الصور Lazy Loading
-                لتقليل استهلاك الإنترنت وتسريع الموقع.
-            */
-
-            img.loading =
-                index < 6 ? "eager" : "lazy";
-
-            img.decoding = "async";
-
-
-            slide.appendChild(img);
-
-            track.appendChild(slide);
-
-
-            /* الضغط على الصورة */
-
-            slide.addEventListener("click", () => {
-
-                openLightbox(index);
-
-            });
-
-        });
-
-
-        /* ==================================================
-           Slider
-        ================================================== */
-
-        let currentIndex = 0;
-
-        let autoSlide;
-
-
-        function getVisibleSlides() {
-
-            if (window.innerWidth <= 850) {
-                return 1;
-            }
-
-            return 3;
-        }
-
-
-        function updateSlider() {
-
-            const slides =
-                document.querySelectorAll(".slide");
-
-            if (!slides.length) {
-                return;
-            }
-
-
-            const visibleSlides =
-                getVisibleSlides();
-
-
-            /*
-                نقرأ المسافة الفعلية (gap) من CSS
-                بدل ما نفترضها ثابتة، عشان تفضل
-                مظبوطة في الموبايل (gap: 0)
-                وفي الديسكتوب (gap: 20px) من غير
-                ما تحصل أي انزياح تراكمي بين الصور
-            */
-
-            const trackStyle =
-                getComputedStyle(track);
-
-            const gap =
-                parseFloat(
-                    trackStyle.columnGap ||
-                    trackStyle.gap ||
-                    "0"
-                ) || 0;
-
-
-            const slideWidth =
-                slides[0].offsetWidth + gap;
-
-
-            const maxIndex =
-                Math.max(
-                    0,
-                    images.length - visibleSlides
-                );
-
-
-            if (currentIndex > maxIndex) {
-                currentIndex = 0;
-            }
-
-
-            if (currentIndex < 0) {
-                currentIndex = maxIndex;
-            }
-
-
-            track.style.transform =
-                `translateX(-${currentIndex * slideWidth}px)`;
-        }
-
-
-        function nextSlide() {
-
-            const visibleSlides =
-                getVisibleSlides();
-
-            const maxIndex =
-                Math.max(
-                    0,
-                    images.length - visibleSlides
-                );
-
-
-            currentIndex++;
-
-
-            if (currentIndex > maxIndex) {
-                currentIndex = 0;
-            }
-
-
-            updateSlider();
-
-        }
-
-
-        function previousSlide() {
-
-            const visibleSlides =
-                getVisibleSlides();
-
-            const maxIndex =
-                Math.max(
-                    0,
-                    images.length - visibleSlides
-                );
-
-
-            currentIndex--;
-
-
-            if (currentIndex < 0) {
-                currentIndex = maxIndex;
-            }
-
-
-            updateSlider();
-
-        }
-
-
-        nextBtn.addEventListener(
-            "click",
-            () => {
-
-                nextSlide();
-                restartAutoSlide();
-
-            }
-        );
-
-
-        prevBtn.addEventListener(
-            "click",
-            () => {
-
-                previousSlide();
-                restartAutoSlide();
-
-            }
-        );
-
-
-        /* ==================================================
-           Auto Play
-        ================================================== */
-
-        function startAutoSlide() {
-
-            clearInterval(autoSlide);
-
-
-            autoSlide =
-                setInterval(
-                    () => {
-
-                        nextSlide();
-
-                    },
-                    3000
-                );
-        }
-
-
-        function restartAutoSlide() {
-
-            clearInterval(autoSlide);
-
-            startAutoSlide();
-
-        }
-
-
-        /* ==================================================
-           إيقاف الحركة عند وضع الماوس على الصور
-        ================================================== */
-
-        const slider =
-            document.querySelector(".slider");
-
-
-        slider.addEventListener(
-            "mouseenter",
-            () => {
-
-                clearInterval(autoSlide);
-
-            }
-        );
-
-
-        slider.addEventListener(
-            "mouseleave",
-            () => {
-
-                startAutoSlide();
-
-            }
-        );
-
-
-        /* ==================================================
-           Swipe للموبايل (السلايدر الرئيسي)
-        ================================================== */
-
-        const sliderWindow =
-            document.querySelector(".slider-window");
-
-        let sliderTouchStartX = 0;
-        let sliderTouchEndX = 0;
-
-
-        sliderWindow.addEventListener(
-            "touchstart",
-            (event) => {
-
-                sliderTouchStartX =
-                    event.changedTouches[0].screenX;
-
-                clearInterval(autoSlide);
-
-            },
-            { passive: true }
-        );
-
-
-        sliderWindow.addEventListener(
-            "touchend",
-            (event) => {
-
-                sliderTouchEndX =
-                    event.changedTouches[0].screenX;
-
-
-                const difference =
-                    sliderTouchStartX - sliderTouchEndX;
-
-
-                if (Math.abs(difference) >= 50) {
-
-                    /*
-                        الصفحة RTL لكن الـ track شغال بـ direction: ltr
-                        فمسحة لليسار (difference موجب) = الصورة التالية
-                        ومسحة لليمين (difference سالب) = الصورة السابقة
-                    */
-
-                    if (difference > 0) {
-
-                        nextSlide();
-
-                    } else {
-
-                        previousSlide();
-
-                    }
-
-                }
-
-
-                startAutoSlide();
-
-            },
-            { passive: true }
-        );
-
-
-        /* ==================================================
-           LIGHTBOX
-        ================================================== */
-
-        let currentLightboxIndex = 0;
-
-
-        function openLightbox(index) {
-
-            currentLightboxIndex = index;
-
-
-            lightboxImage.src =
-                images[index];
-
-
-            lightbox.classList.add("active");
-
-
-            lightbox.setAttribute(
-                "aria-hidden",
-                "false"
-            );
-
-
-            /*
-                نوقف الـSlider أثناء عرض الصورة
-            */
-
-            clearInterval(autoSlide);
-
-        }
-
-
-        function closeLightbox() {
-
-            lightbox.classList.remove("active");
-
-
-            lightbox.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-
-            lightboxImage.src = "";
-
-
-            startAutoSlide();
-
-        }
-
-
-        function showLightboxImage(index) {
-
-            if (index >= images.length) {
-                index = 0;
-            }
-
-
-            if (index < 0) {
-                index = images.length - 1;
-            }
-
-
-            currentLightboxIndex = index;
-
-
-            lightboxImage.src =
-                images[index];
-
-        }
-
-
-        lightboxNext.addEventListener(
-            "click",
-            (event) => {
-
-                event.stopPropagation();
-
-                showLightboxImage(
-                    currentLightboxIndex + 1
-                );
-
-            }
-        );
-
-
-        lightboxPrev.addEventListener(
-            "click",
-            (event) => {
-
-                event.stopPropagation();
-
-                showLightboxImage(
-                    currentLightboxIndex - 1
-                );
-
-            }
-        );
-
-
-        lightboxClose.addEventListener(
-            "click",
-            closeLightbox
-        );
-
-
-        /*
-            الضغط خارج الصورة يقفل الـLightbox
-        */
-
-        lightbox.addEventListener(
-            "click",
-            (event) => {
-
-                if (
-                    event.target === lightbox
-                ) {
-
-                    closeLightbox();
-
-                }
-
-            }
-        );
-
-
-        /* ==================================================
-           Keyboard
-        ================================================== */
-
-        document.addEventListener(
-            "keydown",
-            (event) => {
-
-                if (
-                    !lightbox.classList.contains("active")
-                ) {
-                    return;
-                }
-
-
-                if (event.key === "Escape") {
-
-                    closeLightbox();
-
-                }
-
-
-                if (event.key === "ArrowRight") {
-
-                    showLightboxImage(
-                        currentLightboxIndex + 1
-                    );
-
-                }
-
-
-                if (event.key === "ArrowLeft") {
-
-                    showLightboxImage(
-                        currentLightboxIndex - 1
-                    );
-
-                }
-
-            }
-        );
-
-
-        /* ==================================================
-           Swipe للموبايل
-        ================================================== */
-
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-
-        lightbox.addEventListener(
-            "touchstart",
-            (event) => {
-
-                touchStartX =
-                    event.changedTouches[0].screenX;
-
-            },
-            { passive: true }
-        );
-
-
-        lightbox.addEventListener(
-            "touchend",
-            (event) => {
-
-                touchEndX =
-                    event.changedTouches[0].screenX;
-
-
-                const difference =
-                    touchStartX - touchEndX;
-
-
-                if (Math.abs(difference) < 50) {
-                    return;
-                }
-
-
-                if (difference > 0) {
-
-                    showLightboxImage(
-                        currentLightboxIndex + 1
-                    );
-
-                } else {
-
-                    showLightboxImage(
-                        currentLightboxIndex - 1
-                    );
-
-                }
-
-            },
-            { passive: true }
-        );
-
-
-        /* ==================================================
-           Resize
-        ================================================== */
-
-        window.addEventListener(
-            "resize",
-            updateSlider
-        );
-
-
-        /* ==================================================
-           تشغيل الموقع
-        ================================================== */
-
-        updateSlider();
-
-        startAutoSlide();
-
-    </script>
-
+      }
+    }
+
+    function updateSlider() {
+      const gap = window.innerWidth <= 850 ? 0 : 20;
+      const width = track.parentElement.clientWidth;
+      const slideWidth = window.innerWidth <= 850
+        ? width
+        : (width - gap * 2) / 3;
+
+      track.style.transform = `translateX(-${currentIndex * (slideWidth + gap)}px)`;
+      loadNearbyImages();
+    }
+
+    function nextSlide() {
+      const max = Math.max(0, images.length - visibleSlides());
+      currentIndex = currentIndex >= max ? 0 : currentIndex + 1;
+      updateSlider();
+    }
+
+    function prevSlide() {
+      const max = Math.max(0, images.length - visibleSlides());
+      currentIndex = currentIndex <= 0 ? max : currentIndex - 1;
+      updateSlider();
+    }
+
+    function startAutoPlay() {
+      clearInterval(autoPlay);
+      autoPlay = setInterval(nextSlide, 3000);
+    }
+
+    nextBtn.addEventListener("click", () => {
+      nextSlide();
+      startAutoPlay();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      prevSlide();
+      startAutoPlay();
+    });
+
+    document.querySelector(".gallery-wrap").addEventListener("mouseenter", () => {
+      clearInterval(autoPlay);
+    });
+
+    document.querySelector(".gallery-wrap").addEventListener("mouseleave", startAutoPlay);
+
+    window.addEventListener("resize", updateSlider);
+
+    /* Lightbox */
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxClose = document.getElementById("lightboxClose");
+    const lightboxPrev = document.getElementById("lightboxPrev");
+    const lightboxNext = document.getElementById("lightboxNext");
+
+    let lightboxIndex = 0;
+
+    function openLightbox(index) {
+      lightboxIndex = index;
+      showLightboxImage();
+      lightbox.classList.add("active");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    function showLightboxImage() {
+      lightboxImage.src = images[lightboxIndex];
+      lightboxImage.alt = `عمل رقم ${lightboxIndex + 1}`;
+    }
+
+    function lightboxNextImage() {
+      lightboxIndex = (lightboxIndex + 1) % images.length;
+      showLightboxImage();
+    }
+
+    function lightboxPrevImage() {
+      lightboxIndex = (lightboxIndex - 1 + images.length) % images.length;
+      showLightboxImage();
+    }
+
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightboxNext.addEventListener("click", lightboxNextImage);
+    lightboxPrev.addEventListener("click", lightboxPrevImage);
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!lightbox.classList.contains("active")) return;
+
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") lightboxNextImage();
+      if (event.key === "ArrowRight") lightboxPrevImage();
+    });
+
+    let touchStartX = 0;
+
+    lightbox.addEventListener("touchstart", (event) => {
+      touchStartX = event.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener("touchend", (event) => {
+      const touchEndX = event.changedTouches[0].screenX;
+      const difference = touchStartX - touchEndX;
+
+      if (Math.abs(difference) < 50) return;
+      if (difference > 0) lightboxNextImage();
+      else lightboxPrevImage();
+    }, { passive: true });
+
+    /* PWA Install */
+    let deferredPrompt = null;
+    const installBanner = document.getElementById("installBanner");
+    const installBtn = document.getElementById("installBtn");
+    const installClose = document.getElementById("installClose");
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+
+      if (localStorage.getItem("pwa-install-dismissed") !== "1") {
+        installBanner.classList.add("show");
+      }
+    });
+
+    installBtn.addEventListener("click", async () => {
+      if (!deferredPrompt) return;
+
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+
+      deferredPrompt = null;
+      installBanner.classList.remove("show");
+    });
+
+    installClose.addEventListener("click", () => {
+      installBanner.classList.remove("show");
+      localStorage.setItem("pwa-install-dismissed", "1");
+    });
+
+    window.addEventListener("appinstalled", () => {
+      installBanner.classList.remove("show");
+      deferredPrompt = null;
+    });
+
+    /* Service Worker */
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js")
+          .then(() => console.log("PWA Service Worker registered"))
+          .catch(error => console.error("Service Worker error:", error));
+      });
+    }
+
+    createSlides();
+    startAutoPlay();
+  </script>
 </body>
 </html>
