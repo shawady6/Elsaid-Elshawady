@@ -1,9 +1,11 @@
-const CACHE_NAME = "elsaeed-portfolio-v2";
+const CACHE_NAME = "elsaeed-shawady-pwa-v1";
 
 const APP_SHELL = [
   "./",
   "./index.html",
-  "./manifest.json"
+  "./manifest.json",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png"
 ];
 
 self.addEventListener("install", event => {
@@ -39,7 +41,10 @@ self.addEventListener("fetch", event => {
         }
 
         const copy = response.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+
+        caches.open(CACHE_NAME).then(cache => {
+          cache.put(event.request, copy);
+        });
 
         return response;
       }).catch(() => caches.match("./index.html"));

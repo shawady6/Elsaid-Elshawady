@@ -1,33 +1,31 @@
-# PWA - السعيد عزت الشوادي
+# PWA — السعيد الشوادي
 
-## الملفات
-- `index.html`
-- `manifest.json`
-- `sw.js`
-- `icons/icon-192.png`
-- `icons/icon-512.png`
+هذه النسخة مبنية على نسخة الموقع القديمة التي تحتوي على:
+- التصميم القديم بالكامل
+- Navbar والـ Hero
+- معرض 234 صورة
+- Auto Slide كل 3 ثوانٍ
+- Swipe على الموبايل
+- Fullscreen Lightbox
+- أزرار الاتصال وWhatsApp الموجودة في النسخة القديمة
+- PWA Manifest
+- Service Worker
+- زر تثبيت الموقع على الموبايل
 
-## الصور
-ضع صور الموقع داخل:
-`images/`
+## هيكل الملفات
 
-وبنفس الأسماء:
-`01.jpeg` إلى `234.jpeg`
+index.html
+manifest.json
+sw.js
+icons/icon-192.png
+icons/icon-512.png
+images/01.jpeg ... images/234.jpeg
 
-إذا كانت الصور JPG بدل JPEG، غيّر في `index.html`:
-```js
-const IMAGE_EXTENSION = ".jpeg";
-```
-إلى:
-```js
-const IMAGE_EXTENSION = ".jpg";
-```
+## رفعها على GitHub
 
-## رفع التعديلات
-```bash
+انسخ الملفات فوق مشروعك، ثم:
 git add .
-git commit -m "Convert website to PWA"
+git commit -m "Convert existing website to PWA"
 git push
-```
 
-بعد الـ deploy افتح الموقع من Chrome على الموبايل، وسيظهر خيار تثبيت الموقع عندما يعتبر المتصفح الموقع قابلاً للتثبيت.
+ملاحظة: أرقام الاتصال الموجودة في index.html هي نفس النسخة القديمة.
