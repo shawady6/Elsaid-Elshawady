@@ -3,7 +3,11 @@ name: Build APK
 on:
   push:
     branches: [main, android-apk]
+    tags: ['v*']
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -72,3 +76,11 @@ jobs:
         with:
           name: elsaid-elshawady-apk
           path: elsaid-elshawady.apk
+
+      - name: Publish GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ github.ref_name }}" elsaid-elshawady.apk \
+            --title "${{ github.ref_name }}" --generate-notes
