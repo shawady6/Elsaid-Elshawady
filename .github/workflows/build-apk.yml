@@ -78,9 +78,9 @@ jobs:
           path: elsaid-elshawady.apk
 
       - name: Publish GitHub Release
-        if: startsWith(github.ref, 'refs/tags/v')
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${{ github.ref_name }}" elsaid-elshawady.apk \
-            --title "${{ github.ref_name }}" --generate-notes
+          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then TAG="${{ github.ref_name }}"; else TAG="v1.0.${{ github.run_number }}"; fi
+          gh release create "$TAG" elsaid-elshawady.apk --target "${{ github.sha }}" \
+            --title "$TAG" --generate-notes
