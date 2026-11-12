@@ -1,0 +1,8 @@
+{
+  "appId": "com.shawady.elsaid",
+  "appName": "السعيد الشوادي",
+  "webDir": "www",
+  "android": {
+    "backgroundColor": "#f8f6f1"
+  }
+}
