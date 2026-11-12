@@ -35,6 +35,7 @@ jobs:
 
       - name: Version and launcher icon
         run: |
+          sudo apt-get install -y --no-install-recommends imagemagick
           sed -i "s/versionCode 1/versionCode ${{ github.run_number }}/; s/versionName \"1.0\"/versionName \"1.0.${{ github.run_number }}\"/" android/app/build.gradle
           RES=android/app/src/main/res
           rm -rf $RES/mipmap-anydpi-v26
